@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Ludi Kullanıcı İstatistikleri</h1>
+    <h2 class="my-4">Şirket Bazında Kullanıcı Sayıları</h2>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Şirket</th>
+                <th scope="col">Kullanıcı Sayısı</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in company_table %}
+            <tr>
+                <td>{{ row.company_name }}</td>
+                <td>{{ row.user_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2 class="my-4">Günlük Kullanıcı Sayılarının Gelişimi</h2>
+    <div class="graph-container">
+        {{ graph_html|safe }}
+    </div>
+</div>
+{% endblock %}
